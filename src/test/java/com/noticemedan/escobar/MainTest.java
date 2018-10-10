@@ -9,4 +9,17 @@ public class MainTest {
     @Test
     public void testMain() {
     }
+
+    @Test
+    public void testCreateBroker() {
+    }
+
+    @Test
+    public void testCreateSink() {
+    }
+
+    @Test
+    public void testCreateSource() {
+    }
+
 }

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
+import java.nio.ByteBuffer;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -33,14 +34,16 @@ public class Main {
 			group = InetAddress.getByName(groupName);
 			sink = new MulticastSocket(port);
 			sink.joinGroup(group);
+			//ByteBuffer buffer = ByteBuffer.allocate(1024);
 			byte[] buf = new byte[1000];
-
+			DatagramPacket dp;
 			while(true) {
-				DatagramPacket dp = new DatagramPacket(buf, buf.length);
+				dp = new DatagramPacket(buf, buf.length);
 				sink.receive(dp);
 				byte[] data = dp.getData();
-				String msg = new String(data,0, data.length);
+				String msg = new String(data,0, data.length).trim();
 				System.out.println(msg);
+				buf = new byte[1000];
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

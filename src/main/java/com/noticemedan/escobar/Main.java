@@ -77,7 +77,7 @@ public class Main {
 			group = InetAddress.getByName(groupName);
 			broker = new MulticastSocket(port);
 			broker.joinGroup(group);
-			while(true);
+			while(true); // This is fine :)
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

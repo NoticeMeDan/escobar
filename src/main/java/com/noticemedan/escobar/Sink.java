@@ -20,16 +20,15 @@ public class Sink implements MultiCastProcess {
         MulticastSocket sink = new MulticastSocket(port);
         sink.joinGroup(group);
 
-        byte[] buf = new byte[1000];
-
+        byte[] buf;
         DatagramPacket dp;
         while(true) {
+            buf = new byte[1000];
             dp = new DatagramPacket(buf, buf.length);
             sink.receive(dp);
             byte[] data = dp.getData();
             String msg = new String(data,0, data.length).trim();
             System.out.println(msg);
-            buf = new byte[1000];
         }
     }
 }

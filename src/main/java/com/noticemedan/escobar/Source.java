@@ -21,7 +21,6 @@ public class Source implements MultiCastProcess{
         source.joinGroup(group);
 
         Scanner sc = new Scanner(System.in);
-        byte[] buf = new byte[1000];
         while(true){
             byte[] msg = sc.nextLine().getBytes();
             source.send(new DatagramPacket(msg, msg.length, group, port));

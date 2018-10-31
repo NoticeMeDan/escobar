@@ -12,7 +12,7 @@ public class Main {
 
 		String type = args[0];
         int port = 7007;
-        String ip = "230.0.0.0";
+        String ip = "230.0.0.3";
 
 		try {
 			switch (type) {

@@ -5,14 +5,15 @@ import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
 
-public class Sink implements MultiCastProcess {
+public class Sink {
 
     private int port;
     private String group;
 
-    public Sink(int port, String group){
+    public Sink(int port, String group) throws IOException {
         this.port = port;
         this.group = group;
+        run();
     }
 
     public void run() throws IOException {
@@ -22,6 +23,7 @@ public class Sink implements MultiCastProcess {
 
         byte[] buf;
         DatagramPacket dp;
+
         while(true) {
             buf = new byte[1000];
             dp = new DatagramPacket(buf, buf.length);

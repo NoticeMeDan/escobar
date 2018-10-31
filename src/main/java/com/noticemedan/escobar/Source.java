@@ -6,13 +6,14 @@ import java.net.InetAddress;
 import java.net.MulticastSocket;
 import java.util.Scanner;
 
-public class Source implements MultiCastProcess {
+public class Source {
     private int port;
     private String group;
 
-    public Source(int port, String group) {
+    public Source(int port, String group) throws IOException {
         this.port = port;
         this.group = group;
+        run();
     }
 
     public void run() throws IOException {

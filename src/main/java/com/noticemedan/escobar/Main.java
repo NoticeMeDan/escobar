@@ -4,30 +4,27 @@ import java.io.IOException;
 
 public class Main {
 	public static void main(String[] args) {
-		if (args.length != 3) {
-			System.out.println("Arguments: type, port, ip");
+	    if (args.length != 1) {
+			System.out.println("Arguments: type");
+            System.out.println("Types: source, sink");
 			return;
 		}
 
 		String type = args[0];
-		int port = Integer.parseInt(args[1]);
-		String group = args[2];
+        int port = 7007;
+        String ip = "230.0.0.0";
 
 		try {
 			switch (type) {
-				case "broker":
-					new Broker(port, group).run();
-					break;
 				case "source":
-					new Source(port, group).run();
+					new Source(port, ip);
 					break;
 				case "sink":
-					new Sink(port, group).run();
+					new Sink(port, ip);
 					break;
 			}
 		} catch (IOException ex) {
 			System.out.println(ex.getMessage());
 		}
 	}
-
 }
